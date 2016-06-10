@@ -6,7 +6,6 @@ import sys
 SCREEN_SIZE = (1000,720)#rozmiar okienka 
 SCREEN_WIDTH = 2350 #rozmiar mapy
 SCREEN_HEIGHT = 1225
-HORIZ_MOV_INCR = 10 #szybkość poruszania się 
 WHITE = (255,255,255) # kolor do sprite 
 FPS = 30
 clock = pygame.time.Clock()
