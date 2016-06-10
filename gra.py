@@ -3,16 +3,16 @@ import pygame
 from pygame.locals import *
 import sys
 
-SCREEN_SIZE = (1000,720)
-SCREEN_WIDTH = 2350 
+SCREEN_SIZE = (1000,720)#rozmiar okienka 
+SCREEN_WIDTH = 2350 #rozmiar mapy
 SCREEN_HEIGHT = 1225
-HORIZ_MOV_INCR = 10 #speed of movement
-WHITE = (255,255,255)
+HORIZ_MOV_INCR = 10 #szybkość poruszania się 
+WHITE = (255,255,255) # kolor do sprite 
 FPS = 30
 clock = pygame.time.Clock()
 
 
-def RelRect(actor, camera):
+def RelRect(actor, camera): #określanie pozycji 
     return pygame.Rect(actor.rect.x - camera.rect.x, actor.rect.y - camera.rect.y, actor.rect.w, actor.rect.h)
     
 class Camera(object):
@@ -33,15 +33,14 @@ class Camera(object):
       if self.player.centery < self.rect.centery - 25:
           self.rect.centery = self.player.centery + 25
       self.rect.clamp_ip(self.world_rect)
-
+      #przesuwanie 
     def draw_sprites(self, surf, sprites):
         for s in sprites:
             if s.rect.colliderect(self.rect):
                 surf.blit(s.image, RelRect(s, self))
        
     
-class Lawa(pygame.sprite.Sprite):
-    '''Class for create obstacles'''#przeszkoda - teraz lawa
+class Lawa(pygame.sprite.Sprite):# lawa
     def __init__(self, x, y):
         self.x = x
         self.y = y
@@ -50,7 +49,7 @@ class Lawa(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.topleft = [self.x, self.y]
         
-class Droga(pygame.sprite.Sprite):
+class Droga(pygame.sprite.Sprite): # wczytywanie drogi 
     def __init__(self, x, y):
         self.x = x
         self.y = y
@@ -59,7 +58,7 @@ class Droga(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.topleft = [self.x, self.y]
         
-class Hero(pygame.sprite.Sprite):
+class Hero(pygame.sprite.Sprite): # bohater 
     def __init__(self,x,y):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('hero.jpg').convert_alpha()
@@ -71,7 +70,7 @@ class Hero(pygame.sprite.Sprite):
         self.hajs = 0
         
     def update(self):
-        self.rect.move_ip((self.x,self.y))
+        self.rect.move_ip((self.x,self.y)) # żeby nie wychodzi poza ekran 
         if self.rect.left < 0:
             self.rect.left = 0
         elif self.rect.right > SCREEN_WIDTH:
@@ -81,7 +80,7 @@ class Hero(pygame.sprite.Sprite):
         elif self.rect.bottom >= SCREEN_HEIGHT:
             self.rect.bottom = SCREEN_HEIGHT     
 
-class Hp(pygame.sprite.Sprite):# wyświetlanie hp nad obrazkiem
+class Hp(pygame.sprite.Sprite):# wyświetlanie hp # jeszcze nie działa 
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.tekst = "Hp: %4d" %hero.hp
@@ -97,7 +96,7 @@ class Hp(pygame.sprite.Sprite):# wyświetlanie hp nad obrazkiem
         self.rect.center = 0,0
 
 class Level(object):
-    '''Read a map and create a level'''
+    # czyta plik txt z mapą i tworzy level, wpisuje do list
     def __init__(self, open_level):
         self.level1 = []
         self.droga = []
@@ -110,7 +109,7 @@ class Level(object):
         for l in self.level:
             self.level1.append(l)
 
-        for row in self.level1:
+        for row in self.level1: # poruszamy się po pliku i patrzymy co gdzie jest
             for col in row:
                 if col == "X":
                     lawa1 = Lawa(x, y)
@@ -131,7 +130,7 @@ class Level(object):
             
             #zamknąć plik!
 
-    def get_size(self):
+    def get_size(self): # do kamery
         lines = self.level1
         line = lines[0]
         line = max(lines, key=len)
@@ -139,23 +138,23 @@ class Level(object):
         self.height = (len(lines))*25
         return (self.width, self.height)
         
-def tps(orologio,fps):
-    temp = orologio.tick(fps)
+def tps(o,fps): #do FPS, płynniejszy ruch (czasem gubi klatki)
+    temp = o.tick(fps)
     tps = temp / 1000.
     return tps
         
 
-pygame.init()
-screen = pygame.display.set_mode(SCREEN_SIZE, FULLSCREEN, 32)
+pygame.init()#inicjalizacja  
+screen = pygame.display.set_mode(SCREEN_SIZE, FULLSCREEN, 32) # ekran
 screen_rect = screen.get_rect()
 
-background = pygame.image.load("trawa.jpg").convert_alpha()
+background = pygame.image.load("trawa.jpg").convert_alpha() #tło - trawa 
 background_rect = background.get_rect()
 
-background2 = pygame.image.load("droga.jpg").convert_alpha()
+background2 = pygame.image.load("droga.jpg").convert_alpha() # pewnie kiedyś jakoś zadziała 
 background2_rect = background2.get_rect()
 
-level = Level("mapa.txt")
+level = Level("mapa.txt")#wczytanie pliku przy inicjalizacji klasy Level 
 level.create_level(0,0)
 lawa = level.lawa
 hero = level.hero
@@ -171,7 +170,8 @@ all_sprite = level.all_sprite
 x, y = 0, 0
 action = False
 while True:
-    for event in pygame.event.get():
+    #clock.tick(FPS)
+    for event in pygame.event.get(): # sterowanie 
         if event.type == KEYDOWN:
             if event.key == K_ESCAPE:
                 sys.exit()
@@ -216,8 +216,8 @@ while True:
     bg = pygame.Surface(asize)
     for x in range(0, asize[0], background_rect.w):
         for y in range(0, asize[1], background_rect.h):
-            screen.blit(background, (x,y))
-     
+            screen.blit(background, (x,y)) #blitowanie trawy
+     #### na konsultacjach ###
 #     flist=[line.strip() for line in open ("mapa.txt")]
 #     i = j = 0
 #     for x in range(0, asize[0], background_rect.w):
@@ -248,8 +248,9 @@ while True:
          #       screen.blit(background, (x,y))
           #  y += background_rect.h
         #x += background_rect.w
-            
-            
+    ########### 
+           
+    #kolizja 
     for hit in pygame.sprite.groupcollide(level.hero1,lawa,0,0):
       hero.x = -hero.x 
       hero.y = -hero.y
