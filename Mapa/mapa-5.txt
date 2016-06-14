@@ -1,0 +1,52 @@
+XXXXXXXXXXXXXXXXXXXXXXXXXX                                              
+XXXXXXXXXXXXXXXXXXXXXX                 A                    A            A               A
+XXXXXXXXXXXXXXXXXX                    
+XXXXXXXXXXXXXXX              A                   O       A        A               A
+XXXXXXXXXXXX          A              A           
+XXXXXXXX                                        YYYY                   
+XXXXX                                           YYYYYYYYYYYYYYYYYY     A          A     
+XXX              A         S             A      YYYYYYYYYYYYYYYYYY                             
+X                          B                    YYYYYYYYYYYYYYYYYY                             
+       A                                        YYYY          YYYY                    
+                           YYYYYYYYYYYYYYYYYYYYYYYYY          YYYY                         A
+                           YYYYYYYYYYYYYYYYYYYYYYYYY          YYYY           A      
+      O                    YYYYYYYYYYYYYYYYYYYYYYYYY          YYYY      A           A   
+                A          YYYY                               YYYY                       TTTTTT
+     YYYY                  YYYY                               YYYY                    TTTTTT
+     YYYY                  YYYY       A                       YYYY   A            TTTTTTT
+     YYYY               YYYYYYY               A               YYYY           TTTTTTTTTT     
+     YYYY               YYYYYYY                       A       YYYY        TTTTT       TTT   
+     YYYY             E YYYYYYY                               YYYY     TTTTT           TTTTT 
+     YYYY                  YYYY     A                         YYYY   TTTTT               TTTTT
+     YYYY                  YYYY                 A             YYYYTTTTTT     A            TTTTT
+YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY                            TTTYYYYTTTT
+YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY                         TTTTTTYYYYTTT                 A
+YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY                       TTTTTTTTYYYY        
+                YYYY                A          A     TTTTT    YYYY  
+                YYYY                                TTTT      YYYY              A
+         A      YYYY   A                          TTTTT       YYYY
+  A                         A            A       TTTT         YYYY      A
+              A                               TTTTTT          YYYY                            
+                                  A         TTTTTT      A     YYYY                            
+                       A               TTTTTTTT               YYYY                             
+ A          A                 TTTTTTTTTTTTT                   YYYY          YYYYYYYYY
+      A          A        TTTTTTTTTTTTT               YYYYYYYYYYYY          YYYYYYYYY  W 
+                      TTTTTTTTTT                      YYYYYYYYYYYY          YYYYYYYYY
+ A              A   TTTTT                           E YYYYYYYYYYYY     A    YYYY
+                   TTTT                      A                YYYY          YYYY            A
+         A      TTTTTT                                        YYYY          YYYY
+ A          TTTTTTT                                    A      YYYY          YYYY
+          TTTTTTTT        A        D          A               YYYYYYYYYYYYYYYYYY
+        TTTTTTT                    C                          YYYYYYYYYYYYYYYYYY      A
+      TTTTTTT         A              F                 A      YYYYYYYYYYYYYYYYYY
+    TTTTTT                           H       A                YYYY
+  TTTTTT         A                                            YYYY                   A
+TTTTT                      A         P                        YYYY
+TT            A                                 YYYYYYYYYYYYYYYYYY           A
+                                                YYYYYYYYYYYYYYYYYY
+     A              A                           YYYYYYYYYYYYYYYYYY
+A                                               YYYY          YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+         A      A                    YYYYYYYYYYYYYYY          YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+ A                         A         YYYYYYYYYYYYYYY    A     YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+      A            A               E YYYYYYYYYYYYYYY                        
+                                     

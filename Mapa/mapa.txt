@@ -1,0 +1,53 @@
+XXXXXXXXXX                                                               
+XXXXXXXXX                                                            
+XXXXXXXX                              
+XXXXXXX                                          O 
+XXXXXX                                           
+XXXXX                                           YYY                    
+XXXX                                            YYYYYYYYYYYYYYYYYY
+XXX                        S                    YYYYYYYYYYYYYYYYYY                             
+XX                         B                    YYYYYYYYYYYYYYYYYY                           
+X                                               YYY            YYY                   
+                            YYYYYYYYYYYYYYYYYYYYYYY            YYY                        
+                            YYYYYYYYYYYYYYYYYYYYYYY            YYY                 
+                            YYYYYYYYYYYYYYYYYYYYYYY            YYY                     
+                            YYY                                YYY                         TTTT
+                            YYY                                YYY                      TTT
+                            YYY                                YYY                   TT
+                        YYYYYYY                                YYY           TTTTTTTTTT     
+                        YYYYYYY                                YYY        TTTTT       T     
+                      E YYYYYYY                                YYY     TTTTT            TTTT 
+                            YYY                                YYY   TTTTT
+                            YYY                              T YYYTTTTTT
+YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY                            TTT YYYTTTT
+YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY                         TTTTTT YYYTTT        
+YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY                       TTTTTTTT YYY        
+                 YYY                               TTTTTTT     YYY  
+                 YYY                             TTTTTTT       YYY   
+                 YYY                              TTTTT        YYY
+                                                 TTTT          YYY
+                                              TTTTTT           YYY                            
+                                            TTTTTT             YYY                            
+                                         TTTTTT                YYY                           
+                               TTTTTTTTTTTT                    YYY
+                            TTTTTTTTTTT                        YYY
+                       TTTTTTTTT                               YYY
+                    TTTTT                                      YYY
+                  TTTTT                              AAA       YYY
+                 TTTTT                                         YYY
+             TTTTTT                                            YYY
+            TTTTTTTT               D                           YYY
+         TTTTTTT                   C                           YYY
+      TTTTTTTT                       F                         YYY
+    TTTTTT                           H                         YYY
+  TTTTTT                                                       YYY
+TTTTT                                P                         YYY
+TT                                              YYYYYYYYYYYYYYYYYY
+                                                YYYYYYYYYYYYYYYYYY
+                                                YYYYYYYYYYYYYYYYYY
+                                                YYY            YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+                                     YYYYYYYYYYYYYY            YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+                                     YYYYYYYYYYYYYY            YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+                                   E YYYYYYYYYYYYYY                       
+                                     
+                                     
