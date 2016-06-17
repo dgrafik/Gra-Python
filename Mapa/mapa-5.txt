@@ -30,7 +30,7 @@ YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY                       TTTTTTTTYYYY
                                   A         TTTTTT      A     YYYY                            
                        A               TTTTTTTT               YYYY                             
  A          A                 TTTTTTTTTTTTT                   YYYY          YYYYYYYYY
-      A          A        TTTTTTTTTTTTT               YYYYYYYYYYYY          YYYYYYYYY  W 
+      A          A        TTTTTTTTTTTTT               YYYYYYYYYYYY          YYYYYYYYY W 
                       TTTTTTTTTT                      YYYYYYYYYYYY          YYYYYYYYY
  A              A   TTTTT                           E YYYYYYYYYYYY     A    YYYY
                    TTTT                      A                YYYY          YYYY            A

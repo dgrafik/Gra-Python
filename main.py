@@ -17,16 +17,16 @@ def Menu():
                     sys.exit()
         
         screen.fill(BLACK)
-        on_screen(u"NIE WIEM",WHITE,-300,0,"d")
+        on_screen(u"NIE WIEM",WHITE,-200,0,"d")
         Button("PLAY",450,360,100,100,BLACK,BLACK,"PLAY")
         Button("QUIT",450,460,100,100,BLACK,BLACK,"QUIT")
         pygame.display.update()
 
-def Button(text,x,y,w,h,passive_color,active_color,action):
+def Button(text,x,y,w,h,color1,color2,action):
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
     if x+w > mouse[0] > x and y+h > mouse[1] > y:
-        pygame.draw.rect(screen,active_color,(x,y,w,h))
+        pygame.draw.rect(screen,color2,(x,y,w,h))
         if click[0] == 1:
             if action == "PLAY":
                 Game()
@@ -35,7 +35,7 @@ def Button(text,x,y,w,h,passive_color,active_color,action):
         else:
             text_button(text,WHITE,x,y,w,h,"s")
     else:
-        pygame.draw.rect(screen,passive_color,(x,y,w,h))
+        pygame.draw.rect(screen,color1,(x,y,w,h))
         text_button(text,WHITE,x,y,w,h,"s")
         
 
@@ -500,7 +500,7 @@ def Game():
 
     ######################
         atakhero=random.randint(5,20)
-        atakprzeciwnik1=random.randint(5,20)
+        atakprzeciwnik1=random.randint(8,20)
         atakprzeciwnik=random.randint(2,12)
     
     #############KOLIZJE############
@@ -509,6 +509,7 @@ def Game():
             hero.x = -hero.x 
             hero.y = -hero.y
             if hero.hp<=0:
+                print "GAME OVER"
                 sys.exit()
     
         for hit in pygame.sprite.groupcollide(level.hero1,woda,0,0):
@@ -530,6 +531,7 @@ def Game():
                     d = 1
                     c = 1
                 if hero.hp <= 0:
+                    print "GAME OVER"
                     sys.exit()
             
         if b != 1:
@@ -549,6 +551,7 @@ def Game():
                     a = 1
                     b = 1
                 if hero.hp <= 0:
+                    print "GAME OVER"
                     sys.exit()
             
         for hit in pygame.sprite.groupcollide(level.przeciwnik,woda,0,0):
@@ -578,7 +581,7 @@ def Game():
         for hit in pygame.sprite.groupcollide(level.przeciwnik,level.drzewo,0,0):
             przeciwnik.rect.bottom -= 10
             #przeciwnik.rect.top -= 10
-            przeciwnik.rect.left += 10
+            przeciwnik.rect.left = 10
             #przeciwnik.rect.right -= 10
         
         for hit in pygame.sprite.groupcollide(level.przeciwnik_1,level.drzewo,0,0):
