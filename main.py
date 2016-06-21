@@ -93,7 +93,7 @@ class Woda(pygame.sprite.Sprite): # wczytywanie wody
         self.image = pygame.image.load("Data/Woda1.png").convert()
         self.rect = self.image.get_rect()
         self.rect.topleft = [self.x, self.y]
-
+#można spróbować zrobić klasę entity ?
 class Hero(pygame.sprite.Sprite): # bohater
     def __init__(self,x,y):
         pygame.sprite.Sprite.__init__(self)
@@ -110,7 +110,7 @@ class Hero(pygame.sprite.Sprite): # bohater
         self.gold = 0
 
     def update(self):
-        self.rect.move_ip((self.x,self.y)) # żeby nie wychodzi poza ekran
+        self.rect.move_ip((self.x,self.y)) # żeby nie wychodził poza ekran
         if self.rect.left < 0:
             self.rect.left = 0
         elif self.rect.right > SCREEN_WIDTH:
@@ -399,7 +399,7 @@ class Level(object):
         self.height = (len(lines))*25
         return (self.width, self.height)
 
-def tps(o,fps): #do FPS, płynniejszy ruch (czasem gubi klatki)
+def tps(o,fps): #do FPS
     temp = o.tick(fps)
     tps = temp / 1000.
     return tps
