@@ -469,17 +469,17 @@ def Game():
                     hero.image = pygame.image.load(hero.down[0]).convert_alpha()
                 elif event.key == K_SPACE:
                     action = True
-                if action == True and event.key == K_RIGHT:
+                if action == True and event.key == K_RIGHT:#przyśpieszenie do poprawy - określenie opytmalnej szybkości dla postaci bez i z przyspieszeniem
                     hero.hp -= 1
-                    hero.x = 12
+                    hero.x = 10
                 if action == True and event.key == K_LEFT:
-                    hero.x = -12
+                    hero.x = -10
                     hero.hp -= 1
                 if action == True and event.key == K_UP:
-                    hero.y = -12
+                    hero.y = -10
                     hero.hp -= 1
                 if action == True and event.key == K_DOWN:
-                    hero.y = 12
+                    hero.y = 10
                     hero.hp -= 1
             elif event.type == KEYUP:
                 if event.key == K_LEFT:
