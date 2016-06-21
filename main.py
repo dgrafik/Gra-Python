@@ -15,7 +15,7 @@ def Menu():
             elif event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
                     sys.exit()
-        
+
         screen.fill(BLACK)
         on_screen(u"NIE WIEM",WHITE,-200,0,"d")
         Button("PLAY",450,360,100,100,BLACK,BLACK,"PLAY")
@@ -37,11 +37,11 @@ def Button(text,x,y,w,h,color1,color2,action):
     else:
         pygame.draw.rect(screen,color1,(x,y,w,h))
         text_button(text,WHITE,x,y,w,h,"s")
-        
 
-def RelRect(actor, camera): #określanie pozycji 
+
+def RelRect(actor, camera): #określanie pozycji
     return pygame.Rect(actor.rect.x - camera.rect.x, actor.rect.y - camera.rect.y, actor.rect.w, actor.rect.h)
-    
+
 class Camera(object):
     #klasa do wyśdrodkownia obrazu na boahterze
     def __init__(self, screen, player, level_width, level_height):
@@ -60,13 +60,13 @@ class Camera(object):
       if self.player.centery < self.rect.centery - 25:
           self.rect.centery = self.player.centery + 25
       self.rect.clamp_ip(self.world_rect)
-      #przesuwanie 
+      #przesuwanie
     def draw_sprites(self, surf, sprites):
         for s in sprites:
             if s.rect.colliderect(self.rect):
                 surf.blit(s.image, RelRect(s, self))
-       
-    
+
+
 class Lawa(pygame.sprite.Sprite):# lawa
     def __init__(self, x, y):
         self.x = x
@@ -75,8 +75,8 @@ class Lawa(pygame.sprite.Sprite):# lawa
         self.image = pygame.image.load("Data/lawa.png").convert()
         self.rect = self.image.get_rect()
         self.rect.topleft = [self.x, self.y]
-        
-class Droga(pygame.sprite.Sprite): # wczytywanie drogi 
+
+class Droga(pygame.sprite.Sprite): # wczytywanie drogi
     def __init__(self, x, y):
         self.x = x
         self.y = y
@@ -84,7 +84,7 @@ class Droga(pygame.sprite.Sprite): # wczytywanie drogi
         self.image = pygame.image.load("Data/DROGA_1.png").convert()
         self.rect = self.image.get_rect()
         self.rect.topleft = [self.x, self.y]
-        
+
 class Woda(pygame.sprite.Sprite): # wczytywanie wody
     def __init__(self, x, y):
         self.x = x
@@ -93,8 +93,8 @@ class Woda(pygame.sprite.Sprite): # wczytywanie wody
         self.image = pygame.image.load("Data/Woda1.png").convert()
         self.rect = self.image.get_rect()
         self.rect.topleft = [self.x, self.y]
-        
-class Hero(pygame.sprite.Sprite): # bohater 
+
+class Hero(pygame.sprite.Sprite): # bohater
     def __init__(self,x,y):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('Data/Hero_1.png').convert_alpha()
@@ -108,17 +108,17 @@ class Hero(pygame.sprite.Sprite): # bohater
         self.y = 0
         self.hp = 100
         self.gold = 0
-               
+
     def update(self):
-        self.rect.move_ip((self.x,self.y)) # żeby nie wychodzi poza ekran 
+        self.rect.move_ip((self.x,self.y)) # żeby nie wychodzi poza ekran
         if self.rect.left < 0:
             self.rect.left = 0
         elif self.rect.right > SCREEN_WIDTH:
             self.rect.right = SCREEN_WIDTH
-        elif self.rect.top < 30: 
+        elif self.rect.top < 30:
             self.rect.top = 30
         elif self.rect.bottom >= SCREEN_HEIGHT:
-            self.rect.bottom = SCREEN_HEIGHT 
+            self.rect.bottom = SCREEN_HEIGHT
 
 class Przeciwnik(pygame.sprite.Sprite): # wolniejszy, czyli łatwiejszy przeciwnik LAMA
     def __init__(self,x,y):
@@ -136,11 +136,11 @@ class Przeciwnik(pygame.sprite.Sprite): # wolniejszy, czyli łatwiejszy przeciwn
             self.rect.left = 0
         elif self.rect.right > SCREEN_WIDTH:
             self.rect.right = SCREEN_WIDTH
-        elif self.rect.top < 0: 
+        elif self.rect.top < 0:
             self.rect.top = 0
         elif self.rect.bottom >= SCREEN_HEIGHT:
             self.rect.bottom = SCREEN_HEIGHT
-            
+
         self.x1 = self.rect.center[0] - hero.rect.center[0]
         self.y1 = self.rect.center[1] - hero.rect.center[1]
         self.distance = math.sqrt(self.x1**2+self.y1**2)
@@ -149,8 +149,8 @@ class Przeciwnik(pygame.sprite.Sprite): # wolniejszy, czyli łatwiejszy przeciwn
              self.rect.top -= ((self.rect.top - hero.rect.top)/10.)*0.1
              self.rect.right -= ((self.rect.right - hero.rect.right)/10.)*0.1
              self.rect.bottom -= ((self.rect.bottom - hero.rect.bottom)/10.)*0.1
-             
-             
+
+
 class Przeciwnik1(pygame.sprite.Sprite):
     def __init__(self,x,y):
         pygame.sprite.Sprite.__init__(self)
@@ -160,19 +160,19 @@ class Przeciwnik1(pygame.sprite.Sprite):
         self.x = 0
         self.y = 0
         self.gold = random.randint(5,15)
-        self.hp = 140   
-        
+        self.hp = 140
+
     def update(self):
         self.rect.move_ip((self.x,self.y))
         if self.rect.left < 0:
             self.rect.left = 0
         elif self.rect.right > SCREEN_WIDTH:
             self.rect.right = SCREEN_WIDTH
-        elif self.rect.top < 0: 
+        elif self.rect.top < 0:
             self.rect.top = 0
         elif self.rect.bottom >= SCREEN_HEIGHT:
             self.rect.bottom = SCREEN_HEIGHT
-            
+
         self.x1 = self.rect.center[0] - hero.rect.center[0]
         self.y1 = self.rect.center[1] - hero.rect.center[1]
         self.distance = math.sqrt(self.x1**2+self.y1**2)
@@ -188,15 +188,15 @@ class Domek(pygame.sprite.Sprite):
         self.image = pygame.image.load("Data/ppp1.png").convert_alpha()
         self.rect = self.image.get_rect()
         self.rect.center = (x,y)
-            
-            
+
+
 class Domek1(pygame.sprite.Sprite):
     def __init__(self,x,y):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load("Data/ppp.png").convert_alpha()
         self.rect = self.image.get_rect()
         self.rect.center = (x,y)
-           
+
 
 class Domek2(pygame.sprite.Sprite):
     def __init__(self,x,y):
@@ -209,16 +209,16 @@ class Domek2(pygame.sprite.Sprite):
         self.y1 = self.rect.center[1] - hero.rect.center[1]
         self.distance = math.sqrt(self.x1**2+self.y1**2)
         if self.distance <= 150:
-            hero.hp = 100 
- 
+            hero.hp = 100
+
 class Drzewo(pygame.sprite.Sprite):
     def __init__(self,x,y):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load("Data/drzewo_2.png").convert_alpha()
         self.rect = self.image.get_rect()
-        self.rect.center = (x,y)           
-            
-class Hp(pygame.sprite.Sprite):# wyświetlanie hp 
+        self.rect.center = (x,y)
+
+class Hp(pygame.sprite.Sprite):# wyświetlanie hp
     def __init__(self,x,y,hp):
         pygame.sprite.Sprite.__init__(self)
         self.tekst = "Hp: %d" %hp
@@ -226,14 +226,14 @@ class Hp(pygame.sprite.Sprite):# wyświetlanie hp
         self.image = self.font.render(self.tekst,1,WHITE)
         self.rect = self.image.get_rect()
         self.rect.center = x,y
-        
+
     def update(self,hp):
-        self.tekst = "Hp: %d " %hp 
+        self.tekst = "Hp: %d " %hp
         self.image = self.font.render(self.tekst,1,WHITE)
         self.rect = self.image.get_rect()
         self.rect.top = hero.rect.top - 30
         self.rect.left = hero.rect.left
-        if self.rect.top < 0: 
+        if self.rect.top < 0:
             self.rect.top = 0
 
 class GameOver(pygame.sprite.Sprite):
@@ -245,13 +245,13 @@ class GameOver(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = hero.rect.center
     def update(self):
-        self.tekst = "GAME OVER" 
+        self.tekst = "GAME OVER"
         self.image = self.font.render(self.tekst,1,WHITE)
         self.rect = self.image.get_rect()
         self.rect.center = hero.rect.center
-        
 
-class HpP1(pygame.sprite.Sprite):# wyświetlanie hp 
+
+class HpP1(pygame.sprite.Sprite):# wyświetlanie hp
     def __init__(self,x,y,hp):
         pygame.sprite.Sprite.__init__(self)
         self.tekst = "Hp: %d" %hp
@@ -259,15 +259,15 @@ class HpP1(pygame.sprite.Sprite):# wyświetlanie hp
         self.image = self.font.render(self.tekst,1,WHITE)
         self.rect = self.image.get_rect()
         self.rect.center = x,y
-        
+
     def update(self,hp):
-        self.tekst = "Hp: %d " %hp 
+        self.tekst = "Hp: %d " %hp
         self.image = self.font.render(self.tekst,1,WHITE)
         self.rect = self.image.get_rect()
         self.rect.top = przeciwnik1.rect.top - 30
         self.rect.left = przeciwnik1.rect.left
 
-class HpP(pygame.sprite.Sprite):# wyświetlanie hp 
+class HpP(pygame.sprite.Sprite):# wyświetlanie hp
     def __init__(self,x,y,hp):
         pygame.sprite.Sprite.__init__(self)
         self.tekst = "Hp: %d" %hp
@@ -275,15 +275,15 @@ class HpP(pygame.sprite.Sprite):# wyświetlanie hp
         self.image = self.font.render(self.tekst,1,WHITE)
         self.rect = self.image.get_rect()
         self.rect.center = x,y
-        
+
     def update(self,hp):
-        self.tekst = "Hp: %d " %hp 
+        self.tekst = "Hp: %d " %hp
         self.image = self.font.render(self.tekst,1,WHITE)
         self.rect = self.image.get_rect()
         self.rect.top = przeciwnik.rect.top - 30
         self.rect.left = przeciwnik.rect.left
 
-class Gold(pygame.sprite.Sprite):# wyświetlanie hp - jeszcze nie działa 
+class Gold(pygame.sprite.Sprite):# wyświetlanie hp - jeszcze nie działa
     def __init__(self,x,y,g):
         pygame.sprite.Sprite.__init__(self)
         self.tekst = "Gold: %d"%g
@@ -291,16 +291,16 @@ class Gold(pygame.sprite.Sprite):# wyświetlanie hp - jeszcze nie działa
         self.image = self.font.render(self.tekst,1,WHITE)
         self.rect = self.image.get_rect()
         self.rect.center = x,y
-        
+
     def update(self,g):
         self.tekst = "Gold: %d " %g
         self.image = self.font.render(self.tekst,1,WHITE)
         self.rect = self.image.get_rect()
         self.rect.top = hero.rect.top - 15
         self.rect.left = hero.rect.left
-        if self.rect.top < -20: 
+        if self.rect.top < -20:
             self.rect.top = -20
-        
+
 class Level(object):
     # czyta plik txt z mapą i tworzy level, wpisuje do list
     def __init__(self, open_level):
@@ -317,7 +317,7 @@ class Level(object):
         self.gold = []
         self.domek = []
         self.domek_1 = []
-        self.domek_2 = []        
+        self.domek_2 = []
         self.drzewo = []
         self.all_sprite = pygame.sprite.Group()
         self.all_sprite1 = pygame.sprite.Group()
@@ -398,25 +398,26 @@ class Level(object):
         self.width = (len(line))*25
         self.height = (len(lines))*25
         return (self.width, self.height)
-        
+
 def tps(o,fps): #do FPS, płynniejszy ruch (czasem gubi klatki)
     temp = o.tick(fps)
     tps = temp / 1000.
     return tps
-        
 
-pygame.init()#inicjalizacja  
+
+pygame.init()#inicjalizacja
 screen = pygame.display.set_mode(SCREEN_SIZE, FULLSCREEN, 32) # ekran
 screen_rect = screen.get_rect()
 
-background = pygame.image.load("Data/trawa1.png").convert_alpha() #tło - trawa 
+background = pygame.image.load("Data/trawa1.png").convert_alpha() #tło - trawa
 background_rect = background.get_rect()
 
 pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
 pygame.mixer.music.load("Music/mm.ogg")
 pygame.mixer.music.play(-1)
 
-level = Level("Mapa/mapa-5.txt")#wczytanie pliku przy inicjalizacji klasy Level 
+
+level = Level("Mapa/mapa-5.txt")#wczytanie pliku przy inicjalizacji klasy Level
 level.create_level(0,0)
 lawa = level.lawa
 hero = level.hero
@@ -446,7 +447,7 @@ def Game():
     c=0
     d=0
     while 1:
-        for event in pygame.event.get(): # sterowanie 
+        for event in pygame.event.get(): # sterowanie
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
                     sys.exit()
@@ -468,18 +469,18 @@ def Game():
                     hero.image = pygame.image.load(hero.down[0]).convert_alpha()
                 elif event.key == K_SPACE:
                     action = True
-                if action == True and event.key == K_RIGHT:              
+                if action == True and event.key == K_RIGHT:
                     hero.hp -= 1
-                    hero.x = 10
+                    hero.x = 12
                 if action == True and event.key == K_LEFT:
-                    hero.x = -10
+                    hero.x = -12
                     hero.hp -= 1
                 if action == True and event.key == K_UP:
-                    hero.y = -10
+                    hero.y = -12
                     hero.hp -= 1
                 if action == True and event.key == K_DOWN:
-                    hero.y = 10
-                    hero.hp -= 1    
+                    hero.y = 12
+                    hero.hp -= 1
             elif event.type == KEYUP:
                 if event.key == K_LEFT:
                     hero.x = 0
@@ -491,7 +492,7 @@ def Game():
                     hero.y = 0
                 elif event.key == K_SPACE:
                     action = False
-   
+
         asize = ((screen_rect.w // background_rect.w + 1) * background_rect.w, (screen_rect.h // background_rect.h + 1) * background_rect.h)
         bg = pygame.Surface(asize)
         for x in range(0, asize[0],background_rect.w):
@@ -502,16 +503,16 @@ def Game():
         atakhero=random.randint(5,20)
         atakprzeciwnik1=random.randint(8,20)
         atakprzeciwnik=random.randint(2,12)
-    
+
     #############KOLIZJE############
         for hit in pygame.sprite.groupcollide(level.hero1,lawa,0,0):
             hero.hp -= 15
-            hero.x = -hero.x 
+            hero.x = -hero.x
             hero.y = -hero.y
             if hero.hp<=0:
                 print "GAME OVER"
                 sys.exit()
-    
+
         for hit in pygame.sprite.groupcollide(level.hero1,woda,0,0):
             hero.x = -hero.x
             hero.y = -hero.y
@@ -524,6 +525,7 @@ def Game():
                 przeciwnik.hp -= atakhero
                 pygame.mixer.music.load("Music/sword.ogg")
                 pygame.mixer.music.play()
+
                 if przeciwnik.hp <= 0:
                     hero.gold += przeciwnik.gold
                     all_sprite.remove(level.przeciwnik)
@@ -533,17 +535,17 @@ def Game():
                 if hero.hp <= 0:
                     print "GAME OVER"
                     sys.exit()
-            
+
         if b != 1:
             for hit in pygame.sprite.groupcollide(level.przeciwnik_1,level.hero1,0,0):
                 hero.x = -hero.x
                 hero.y = -hero.y
                 hero.hp -= atakprzeciwnik1
-                hphero = hero.hp 
+                hphero = hero.hp
                 przeciwnik1.hp -= atakhero
                 pygame.mixer.music.load("Music/sword.ogg")
                 pygame.mixer.music.play()
-            
+
                 if przeciwnik1.hp <= 0:
                     hero.gold += przeciwnik1.gold
                     all_sprite.remove(level.przeciwnik_1)
@@ -553,99 +555,99 @@ def Game():
                 if hero.hp <= 0:
                     print "GAME OVER"
                     sys.exit()
-            
+
         for hit in pygame.sprite.groupcollide(level.przeciwnik,woda,0,0):
             przeciwnik.rect.bottom -= 10
             przeciwnik.rect.top -= 10
             przeciwnik.rect.left -= 10
             przeciwnik.rect.right -= 10
-        
+
         for hit in pygame.sprite.groupcollide(level.przeciwnik,lawa,0,0):
             przeciwnik.rect.top += 10
             przeciwnik.rect.left += 10
-        
+
         for hit in pygame.sprite.groupcollide(level.przeciwnik_1,woda,0,0):
             przeciwnik1.rect.bottom += 10
-            przeciwnik1.rect.top += 10 
+            przeciwnik1.rect.top += 10
             przeciwnik1.rect.left -= 10
             przeciwnik1.rect.right -= 10
-        
+
         for hit in pygame.sprite.groupcollide(level.przeciwnik_1,lawa,0,0):
             przeciwnik1.rect.top += 10
             przeciwnik1.rect.left += 10
-        
+
         for hit in pygame.sprite.groupcollide(level.hero1,level.drzewo,0,0):
             hero.x = -hero.x
             hero.y = -hero.y
-    
+
         for hit in pygame.sprite.groupcollide(level.przeciwnik,level.drzewo,0,0):
             przeciwnik.rect.bottom -= 10
             #przeciwnik.rect.top -= 10
             przeciwnik.rect.left = 10
             #przeciwnik.rect.right -= 10
-        
+
         for hit in pygame.sprite.groupcollide(level.przeciwnik_1,level.drzewo,0,0):
             przeciwnik1.rect.bottom += 10
-            przeciwnik1.rect.top += 10 
+            przeciwnik1.rect.top += 10
             przeciwnik1.rect.left -= 10
             przeciwnik1.rect.right -= 10
-        
+
         for hit in pygame.sprite.groupcollide(level.hero1,level.domek,0,0):
             hero.x = -hero.x
             hero.y = -hero.y
-        
+
         for hit in pygame.sprite.groupcollide(level.przeciwnik,level.domek,0,0):
             przeciwnik.rect.bottom -= 10
             przeciwnik.rect.top -= 10
             przeciwnik.rect.left -= 10
             przeciwnik.rect.right -= 10
-        
+
         for hit in pygame.sprite.groupcollide(level.przeciwnik_1,level.domek,0,0):
             przeciwnik1.rect.bottom += 10
-            przeciwnik1.rect.top += 10 
+            przeciwnik1.rect.top += 10
             przeciwnik1.rect.left -= 10
             przeciwnik1.rect.right -= 10
-    
+
         for hit in pygame.sprite.groupcollide(level.hero1,level.domek_1,0,0):
             hero.x = -hero.x
             hero.y = -hero.y
-        
+
         for hit in pygame.sprite.groupcollide(level.przeciwnik_1,level.domek_1,0,0):
             przeciwnik1.rect.bottom += 10
-            przeciwnik1.rect.top += 10 
+            przeciwnik1.rect.top += 10
             przeciwnik1.rect.left -= 10
             przeciwnik1.rect.right -= 10
-            
+
         for hit in pygame.sprite.groupcollide(level.przeciwnik,level.domek_1,0,0):
             przeciwnik.rect.bottom += 10
-            przeciwnik.rect.top += 10 
+            przeciwnik.rect.top += 10
             przeciwnik.rect.left -= 10
             przeciwnik.rect.right -= 10
-    
+
         for hit in pygame.sprite.groupcollide(level.hero1, level.domek_2,0,0):
             hero.x = -hero.x
             hero.y = -hero.y
-    
+
         for hit in pygame.sprite.groupcollide(level.przeciwnik,level.domek_2,0,0):
             przeciwnik.rect.bottom += 10
-            przeciwnik.rect.top += 10 
+            przeciwnik.rect.top += 10
             przeciwnik.rect.left -= 10
             przeciwnik.rect.right -= 10
-        
+
         for hit in pygame.sprite.groupcollide(level.przeciwnik_1,level.domek_2,0,0):
             przeciwnik1.rect.bottom += 10
-            przeciwnik1.rect.top += 10 
+            przeciwnik1.rect.top += 10
             przeciwnik1.rect.left -= 10
             przeciwnik1.rect.right -= 10
-        
-#################################### 
-    
+
+####################################
+
         time_spent = tps(clock, FPS)
-    
-        camera.draw_sprites(screen, level.all_sprite1) 
+
+        camera.draw_sprites(screen, level.all_sprite1)
         camera.draw_sprites(screen, all_sprite)
         camera.draw_sprites(screen, level.all_sprite2)
-    
+
 
         hero.update()
         camera.update()
@@ -655,10 +657,11 @@ def Game():
         if d!=1:
             przeciwnik.update()
             hp2.update(przeciwnik.hp)
-            if a!=1:
-                przeciwnik1.update()
-                hp1.update(przeciwnik1.hp)
-            pygame.display.flip()  
-       
-       
+        if a!=1:
+            przeciwnik1.update()
+            hp1.update(przeciwnik1.hp)
+
+        pygame.display.flip()
+
+
 Menu()
